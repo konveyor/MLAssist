@@ -1,0 +1,5 @@
+.env
+.venv
+examples/diagram_generation/chroma_persist
+examples/infinite_website/models/
+examples/infinite_website/site.pickle

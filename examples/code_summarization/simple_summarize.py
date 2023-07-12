@@ -36,7 +36,10 @@ except IOError:
 llm = OpenAI(temperature=0)
 
 prompt = f"""
-Please summarize the following code. Make specific references to lines of code using the format "[000000]".
+You are a highly intelligent, highly skilled enterprise software engineer. 
+Please summarize the following code. 
+Make specific references to lines of code using the format "[000000]".
+If possible, explain what problem this code is trying to solve, and evaluate its effectiveness at doing so.
 --- begin {args.file} ---
 {file_content}
 --- end {args.file} ---
