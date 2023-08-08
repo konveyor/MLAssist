@@ -1,9 +1,14 @@
-from langchain.embeddings import OpenAIEmbeddings
+from langchain.embeddings import OpenAIEmbeddings, LlamaCppEmbeddings
 from langchain.document_loaders import UnstructuredMarkdownLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import RetrievalQA
+
+from langchain.llms import LlamaCpp
+from langchain import PromptTemplate, LLMChain
+from langchain.callbacks.manager import CallbackManager
+from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 
 from chromadb.config import Settings
 
@@ -22,7 +27,8 @@ CHROMA_SETTINGS = Settings(
 )
 
 def build_knowledge():
-  embeddings = OpenAIEmbeddings(openai_api_key=os.environ["OPENAI_API_KEY"])
+  # embeddings = OpenAIEmbeddings(openai_api_key=os.environ["OPENAI_API_KEY"])
+  embeddings = LlamaCppEmbeddings(model_path="../infinite_website/models/llama-7b.ggmlv3.q2_K.bin")
   chunk_size = 500
   chunk_overlap = 50
 
@@ -45,18 +51,25 @@ def build_knowledge():
   db = None
 
 def ask_with_memory(line):
-  embeddings = OpenAIEmbeddings(openai_api_key=os.environ["OPENAI_API_KEY"])
+  # embeddings = OpenAIEmbeddings(openai_api_key=os.environ["OPENAI_API_KEY"])
+  embeddings = LlamaCppEmbeddings(model_path="../infinite_website/models/llama-7b.ggmlv3.q2_K.bin")
 
   db = Chroma(persist_directory="chroma_persist", embedding_function=embeddings, client_settings=CHROMA_SETTINGS)
 
   retriever = db.as_retriever()
 
   res = ""
-  llm = ChatOpenAI(temperature=0)
+  # llm = ChatOpenAI(temperature=0)
+  callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
+  llm = llm = LlamaCpp(
+    model_path="../infinite_website/models/llama-7b.ggmlv3.q2_K.bin",
+    callback_manager=callback_manager,
+    verbose=True
+  )
   qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=retriever, return_source_documents=True)
 
   # Get the answer from the chain
-  res = qa("---------------------\nYou are a hyperintelligent software engineer. Using the documentation provided, assist with the following problem:" + line)
+  res = qa("---------------------\nYou are a hyperintelligent software engineer. Using the documentation provided, assist with the following problem:\nQuestion: " + line + "\nResponse:")
   answer, docs = res['result'], res['source_documents']
   res = answer + "\n\n\n" + "Sources:\n"
   
@@ -77,7 +90,7 @@ def ask_with_memory(line):
   return res
 
 if __name__ == "__main__":
-  # build_knowledge()
+  build_knowledge()
 
   parser = argparse.ArgumentParser("simple-summarizer")
   parser.add_argument("-f", "--file", help="The file to summarize.")

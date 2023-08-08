@@ -1,5 +1,11 @@
 .env
 .venv
 examples/diagram_generation/chroma_persist
-examples/infinite_website/models/
+examples/models/
 examples/infinite_website/site.pickle
+examples/playpen/dolphin-emu/
+examples/playpen/chroma_persist/
+examples/diagram_generation/mermaid_docs
+examples/playpen/konveyor
+# examples/playpen/konveyor_spring-framework-petclinic_legacy_chroma
+# examples/playpen/konveyor_spring-framework-petclinic_legacy_sqlite.db
