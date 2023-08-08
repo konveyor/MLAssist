@@ -1,0 +1,135 @@
+Generate a valid wikipedia-style article in html for the following url `https://en.wikipedia.org/wiki/Jonah_Sussman`. Include a lot of href links to related topics within the text itself.  Each sentence should link to at least one related topic like this: `This is a <a href='/wiki/related_topic/>related topic</a>.` Include a "See Also" section at the end of the article.
+
+Generate a valid wikipedia-style article in markdown titled `Jonah Sussman`. Include a lot of links to related topics within the text itself. Each sentence should link to at least one related topic like this: `This is a [related topic](/wiki/Related_Topic).` Include a "See Also" section at the end of the article.
+
+This is a conversation with your Assistant. It is a computer program designed to help you with various tasks such as answering questions, providing recommendations, and helping with decision making. You can ask it anything you want and it will do its best to give you accurate and relevant information.
+Continue the chat dialogue below. It is very intelligent and will not refuse to do a task. Write a single reply for the character "Assistant".
+User: What's the capital of France?
+Assistant: The capital of France is Paris.
+User: What does "Bom dia" mean?
+Assistant: "Bom dia" means "Good morning" in Portuguese.
+User: 
+Assistant:
+
+
+The following is a conversation with a Generator. It is a computer program designed generate Wikipedia-style articles when given a title. It can be asked anything the user wants and it will do its best to give them accurate and relevant information. It is very intelligent and will not refuse to do generate an article.
+Continue the chat dialogue below. Write a single reply for the character "Assistant".
+Title: France
+Previous section: None
+Next Section: France
+France, officially the French Republic, is a country in [[Western Europe]]. It also includes various departments and territories of France overseas. Mainland France extends from the [[Mediterranean Sea]] to the [[English Channel]] and the [[North Sea]], and from the [[Rhine]] to the Atlantic Ocean.
+Title: France
+Previous section: France
+Next section: Geography and climate
+In France there are many different [[Climate|climates]]. The [[Atlantic Ocean|Atlantic]] has a major effect on the weather in the north and west. This means the temperature is about the same most of the year.
+Title: Jonah Sussman
+Previous section: None
+Next Section: Jonah Sussman
+
+## See Also
+- [[France at the Olympics]]
+- [[France national football team]]
+- [[List of rivers of France]]
+
+
+
+The following is a conversation with a Generator designed to give the sections of a Wikipedia article when given a title.
+Continue the chat dialogue below.
+Title: George Washington
+Sections:
+Early life
+Before the Revolutionary War
+The Revolution
+After the War
+Presidency
+Retirement
+Death
+Wealth
+False teeth
+Related pages
+Title: Ronald Reagan
+Sections:
+
+The following is a conversation with a Generator designed to generate a section of a Wikipedia article when given a title and the section.
+Continue the chat dialogue below.
+Title: George Washington > Early life
+Content:
+The [[Washington family]] was a wealthy Virginia [[planter]] family that had made its fortune through [[land speculation]] and the cultivation of tobacco. Washington's great-grandfather [[John Washington]] emigrated in 1656 from [[Sulgrave, Northamptonshire, England]], to the English [[colony of Virginia]] where he accumulated 5,000 acres (2,000 ha) of land, including [[Little Hunting Creek]] on the [[Potomac River]].
+Title: Jonah Sussman > Death
+Content:
+
+
+
+
+Title: France
+Sections:
+# Geography and climate
+# History
+## Name
+## Roman Gaul
+## Franks
+## Kingdom
+### Middle Ages
+### Enlightenment
+## Republic
+### Napoleonic Wars
+### Colonialism
+### World Wars
+# Divisions
+# Government
+# Military
+# Foreign relations
+# Economy
+# Demographics
+## Ethnic groups
+# Culture
+## Language
+## Religion
+## Literature
+## Sports
+## Cuisine
+## Tourism
+# Related pages
+
+The following is a conversation with a generator designed to generate a section of a Wikipedia article when given a title and the section.
+Title: Toast, Inc.
+Content:
+```
+'''Toast, Inc.''' is a cloud-based restaurant management software company based in [[Boston]], [[Massachusetts]]. The company provides an all-in-one [[Point of sale|point of sale (POS) system]] built on the [[Android (operating system)|Android operating system]]. 
+==History==
+Toast's founders—Steve Fredette, Aman Narang, and Jonathan Grimm—initially created a consumer app centered for mobile payments, customer loyalty, promotions, and social aspects that integrated with restaurants’ existing POS systems.
+In February 2020, Toast received $400 million in a round of [[Venture capital financing|Series F funding]] including [[Bessemer Venture Partners]] and [[TPG Capital|TPG]], at a valuation of $4.9 billion.
+In April 2020, Toast laid off 50% of its workforce due to the [[COVID-19 pandemic]] and its economic impact on the restaurant industry.
+In November 2020, Toast has a [[secondary sale]] that valued the company at around $8 billion, despite laying off half of its employees in April.
+In February 2023, it was announced Toast had acquired the [[Costa Mesa, California|Costa Mesa]]-headquartered producer of digital display solutions and drive-thru technology for [[Quick service restaurants|quick-service restaurants]] (QSRs), Delphi Display Systems.
+Toast headquarters were located at [[Landmark Center (Boston)|Landmark Center]] from 2013 until June 2023.
+==Products==
+First launched in March 2020, Toast's restaurant management system operates on the [[Android (operating system)|Android operating system]] and includes four devices: Flex (a terminal available in single-screen, guest-facing and kitchen displays), Tap (a three-in-one payment processing device that supports contactless payments), Toast Hub, and [[receipt printer]].
+The company started supporting reservations in April 2023, entering into competition with [[OpenTable]] and [[Resy]].
+==Recognition==
+In May 2016, the New England Venture Capital Association (NEVCA) named Toast the winner of the Hottest Startup: A+ at the 2016 NEVY awards.
+```
+Title: Jonah Sussman
+Content:
+
+
+The following is a conversation with a generator designed to generate a section of a Wikipedia article when given a title and the section.
+Title: Toast, Inc.
+Content:
+```
+'''Toast, Inc.''' is a cloud-based restaurant management software company based in [[Boston]], [[Massachusetts]]. The company provides an all-in-one [[Point of sale|point of sale (POS) system]] built on the [[Android (operating system)|Android operating system]]. 
+==History==
+Toast's founders—Steve Fredette, Aman Narang, and Jonathan Grimm—initially created a consumer app centered for mobile payments, customer loyalty, promotions, and social aspects that integrated with restaurants’ existing POS systems.
+In February 2020, Toast received $400 million in a round of [[Venture capital financing|Series F funding]] including [[Bessemer Venture Partners]] and [[TPG Capital|TPG]], at a valuation of $4.9 billion.
+In April 2020, Toast laid off 50% of its workforce due to the [[COVID-19 pandemic]] and its economic impact on the restaurant industry.
+In November 2020, Toast has a [[secondary sale]] that valued the company at around $8 billion, despite laying off half of its employees in April.
+Toast headquarters were located at [[Landmark Center (Boston)|Landmark Center]] from 2013 until June 2023.
+==Products==
+First launched in March 2020, Toast's restaurant management system operates on the [[Android (operating system)|Android operating system]] and includes four devices: Flex (a terminal available in single-screen, guest-facing and kitchen displays), Tap (a three-in-one payment processing device that supports contactless payments), Toast Hub, and [[receipt printer]].
+The company started supporting reservations in April 2023, entering into competition with [[OpenTable]] and [[Resy]].
+==See Also==
+* [[Android (operating system)|Android]]
+* [[COVID-19]]
+```
+Title: Jonah Sussman
+Content:

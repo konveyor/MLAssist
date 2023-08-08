@@ -3,6 +3,7 @@ from langchain import HuggingFacePipeline
 from langchain.chat_models import ChatOpenAI
 from flask import Flask, redirect, request
 from dotenv import load_dotenv
+import urllib.parse
 import pickle
 import os
 import re
@@ -14,10 +15,10 @@ llm = ChatOpenAI(temperature=0.9)
 
 
 # llm = HuggingFacePipeline.from_model_id(
-#     model_id="nomic-ai/gpt4all-j",
-#     # model_id="bigscience/bloom-1b7",
-#     task="text-generation",
-#     model_kwargs={"temperature": 0.9, "max_length": 256},
+#   model_id="nomic-ai/gpt4all-j",
+#   # model_id="bigscience/bloom-1b7",
+#   task="text-generation",
+#   model_kwargs={"temperature": 0.9, "max_length": 256},
 # )
 
 # from langchain.llms import GPT4All
@@ -38,8 +39,9 @@ def clean_text(rgx_list, text):
 
 def generate_article(path):
   val = llm.predict(f"""
-Generate a valid wikipedia-style article in html for the following url `https://en.wikipedia.org/{path}`.
-Include a lot of href links to related topics within the text itself.
+Generate a valid wikipedia-style article in html for the following url `https://en.wikipedia.org/wiki/{path}`.
+Include a lot of href links to related topics within the text itself. 
+Each sentence should link to at least one related topic like this: `This is a <a href='/wiki/related_topic/>related topic</a>.`
 Include a "See Also" section at the end of the article.
 """)
 
@@ -86,13 +88,18 @@ hr {
 
   val = re.sub(r"<body>", f"""
   <body>
-  <form action="/{path}" method="post">
-    <input type="submit" name="submit_button" value="🔃"/>
-  </form>
+  <div style="display: flex; justify-content: space-between;">
+    <form action="/wiki/{path}" method="post">
+      <input type="submit" name="submit_button" value="🔃">
+    </form>
+    <form action="/search" method="post">
+      <input type="text" name="searchterm">
+      <input type="submit" name="submit_button" value="🔎">
+    </form>
+  </div>
   <hr>""", val)
 
-  # <input type="text"   name="searchterm" />
-  # <input type="submit" name="submit_button" value="🔎"/>
+
 
   db[path] = val
   with open('site.pickle', 'wb') as handle:
@@ -101,18 +108,14 @@ hr {
   print(val)
   return val
 
-@app.route("/", defaults={"path": ""})
-@app.route("/<path:path>", methods = ['POST', 'GET'])
+@app.route("/wiki/", defaults={"path": ""})
+@app.route("/wiki/<path:path>", methods = ['POST', 'GET'])
 def wiki_page(path):
   if request.method == "POST":
-    if request.form['submit_button'] == "🔃":
-      if path in db:
-        del db[path]
-      
-      redirect(path)
-    else:
-
-      redirect(f"/wiki/{request.form.get('searchterm')}")
+    if path in db:
+      del db[path]
+    
+    redirect(f"/wiki/{path}")
 
   if path in db:
     print(db[path])
@@ -120,6 +123,9 @@ def wiki_page(path):
 
   return generate_article(path)
   
+@app.route("/search", methods =['GET', 'POST'])
+def search_page():
+  return redirect(f"/wiki/{urllib.parse.quote(request.form.get('searchterm').title().replace(' ', '_'))}")
 
 
 if __name__ == "__main__":
