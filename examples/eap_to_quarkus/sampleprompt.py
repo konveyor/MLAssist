@@ -1,23 +1,23 @@
 import os
+from dotenv import find_dotenv, load_dotenv
+from langchain.chat_models import ChatOpenAI
+from langchain.prompts import ChatPromptTemplate
 import openai
 
-api_key = os.environ.get('OPENAI_API_KEY')
+_ = load_dotenv(find_dotenv()) 
+openai.api_key = os.environ['OPENAI_API_KEY']
+chat = ChatOpenAI(temperature=0.0, model="gpt-3.5-turbo")
 
-if api_key is None:
-    raise ValueError("API key not found. Set the OPENAI_API_KEY environment variable.")
+temp ="""
+You have been provided with prior solved examples in {text}. It is time to resolve a similar incident. Find a solution for the issue in {java_code_snippet}.
+Make sure it is compatible with Quarkus 3.4.1 as well as Jakarta EE 9 and Java 11.
 
-openai.api_key = api_key
+"""
 
-def get_completion(prompt, model="gpt-3.5-turbo"):
-    messages = [{"role": "user", "content": prompt}]
-    response = openai.ChatCompletion.create(
-        model=model,
-        messages=messages,
-        temperature=0, 
-    )
-    return response.choices[0].message["content"]
+prompt_template = ChatPromptTemplate.from_template(temp)
 
-text = """You are an expert in Java EAP and Quarkus technologies. You are going to assist with modernizing EAP applications to  
+modernize_text = """
+You are an expert in Java EAP and Quarkus technologies. You are going to assist with modernizing EAP applications to  
 Quarkus 3.4.1, Jakarta EE 9, and Java 11. There are some sample scenarios provided below,
 
 Example 1:
@@ -55,8 +55,7 @@ public class CatalogService {
 }
 """
 
-# Example code snippet to modernize
-java_code_snippet = """
+modernize_question="""
 Incident metadata: Stateless scoped bean
 
 Issue details:
@@ -69,10 +68,10 @@ public class MemberRegistration {
 ```
 """
 
-prompt =f"""
-You have been provided with prior solved examples in #{text}. It is time to resolve a similar incident. Find a solution for the issue in #{java_code_snippet}.
-Make sure it is compatible with Quarkus 3.4.1 as well as Jakarta EE 9 and Java 11.
+modernize_messages = prompt_template.format_messages(
+                    text=modernize_text,
+                    java_code_snippet=modernize_question)
 
-"""
-response = get_completion(prompt)
-print(response)
+modernize_response = chat(modernize_messages)
+
+print(modernize_response.content)
