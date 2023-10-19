@@ -12,6 +12,7 @@ temp ="""
 You have been provided with prior solved examples in {text}. It is time to resolve a similar incident. Find a solution for the issue in {java_code_snippet}.
 Make sure it is compatible with Quarkus 3.4.1 as well as Jakarta EE 9 and Java 11.
 
+Make sure the output is displayed in the diff format like github
 """
 
 prompt_template = ChatPromptTemplate.from_template(temp)
