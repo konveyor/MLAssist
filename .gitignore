@@ -1,5 +1,6 @@
 .env
 .venv
+.vscode
 examples/diagram_generation/chroma_persist
 examples/models/
 examples/infinite_website/site.pickle
