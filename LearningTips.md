@@ -32,3 +32,6 @@ Below are resources to follow for on-going developments in the AI community
 * ["The Batch"](https://www.deeplearning.ai/the-batch/) - Newsletter from DeepLearning.ai
 * https://synthetic.work/
 	* "Synthetic Work is a non-technical, free, weekly newsletter written by a former Fortune 1000 tech executive and Gartner analyst to understand how AI is changing our jobs and the way we work."
+* [HuggingFace NewsLetter](https://huggingface.curated.co/)
+* [The Gradient by the Stanford Artificial Intelligence Laboratory 'SAIL'](https://thegradient.pub/)
+
