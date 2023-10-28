@@ -1,0 +1,22 @@
+- input: |
+    The older set of importlib.resources functions were deprecated in favor of the replacements added in Python 3.9 and will be removed in a future Python version, due to not supporting resources located within package subdirectories:
+    importlib.resources.contents()
+    importlib.resources.is_resource()
+    importlib.resources.open_binary()
+    importlib.resources.open_text()
+    importlib.resources.read_binary()
+    importlib.resources.read_text()
+    importlib.resources.path()
+  output: importlib.resources.(contents|is_resource|open_binary|open_text|read_binary|read_text|path)*
+- input: |
+    Deprecated functions contents(), is_resource(), open_binary(), open_text(), read_binary(), read_text(), path() in importlib.resources module.
+  output: importlib.resources.(contents|is_resource|open_binary|open_text|read_binary|read_text|path)*
+- input: |
+    The locale.getdefaultlocale() function is deprecated and will be removed in Python 3.15. Use locale.setlocale(), locale.getpreferredencoding(False) and locale.getlocale() functions instead. (Contributed by Victor Stinner in gh-90817.)
+  output: locale.getdefaultlocale()
+- input: |
+    Removed getargspec() from inspect module. Use inspect.signature() or inspect.getfullargspec() instead.
+  output: inspect.getargspec()
+- input: |
+    Removed the __getitem__() methods of xml.dom.pulldom.DOMEventStream, wsgiref.util.FileWrapper and fileinput.FileInput.
+  output: xml.dom.pulldom.DOMEventSteram.__getitem__ OR wsgiref.util.FileWrapper.__getitem__ OR fileinput.FileInput.__getitem__

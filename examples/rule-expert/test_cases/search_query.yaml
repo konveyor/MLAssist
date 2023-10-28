@@ -1,0 +1,2 @@
+- input: |
+    nntplib.NNTP: xpath() and xgtitle() methods have been removed. These methods are deprecated since Python 3.3. Generally, these extensions are not supported or not enabled by NNTP server administrators. For xgtitle(), please use nntplib.NNTP.descriptions() or nntplib.NNTP.description() instead.

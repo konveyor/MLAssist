@@ -1,0 +1,26 @@
+- input: org.jbpm OR org.springframework
+  language: java
+  output: |
+    when:
+      or:
+      - java.referenced:
+          pattern: org.jbpm
+      - java.referenced:
+          pattern: org.springframework
+- input: xml.dom.pulldom.DOMEventSteram.__getitem__ AND wsgiref.util.FileWrapper.__getitem__ AND fileinput.FileInput.__getitem__
+  language: python
+  output: |
+    when:
+      and:
+      - python.referenced:
+          pattern: xml.dom.pulldom.DOMEventSteram.__getitem__
+      - python.referenced:
+          pattern: wsgiref.util.FileWrapper.__getitem__
+      - python.referenced:
+          pattern: fileinput.FileInput.__getitem__
+- input: locale.getdefaultlocale()
+  language: python
+  output: |
+    when:
+      python.referenced:
+        pattern: locale.getdefaultlocale()

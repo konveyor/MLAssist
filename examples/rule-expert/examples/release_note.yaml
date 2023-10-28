@@ -1,0 +1,64 @@
+- input: |
+    Removed C APIs are listed separately.\
+    Removed the @asyncio.coroutine() decorator enabling legacy generator-based coroutines to be compatible with async / await code. The function has been deprecated since Python 3.8 and the removal was initially scheduled for Python 3.10. Use async def instead. (Contributed by Illia Volochii in bpo-43216.)
+  output: |
+    - Removed the @asyncio.coroutine() decorator enabling legacy generator-based coroutines to be compatible with async / await code. Use async def instead.
+- input: |
+    Removed asyncio.coroutines.CoroWrapper used for wrapping legacy generator-based coroutine objects in the debug mode. (Contributed by Illia Volochii in bpo-43216.)
+  output:
+    - Removed asyncio.coroutines.CoroWrapper used for wrapping legacy generator-based coroutine objects in the debug mode.
+- input: |
+    Due to significant security concerns, the reuse_address parameter of asyncio.loop.create_datagram_endpoint(), disabled in Python 3.9, is now entirely removed. This is because of the behavior of the socket option SO_REUSEADDR in UDP. (Contributed by Hugo van Kemenade in bpo-45129.)
+  output: |
+    - Removed the reuse_address parameter of asyncio.loop.create_datagram_endpoint().
+- input: |  
+    - Removed the binhex module, deprecated in Python 3.9. Also removed the related, similarly-deprecated binascii functions:
+        binascii.a2b_hqx()
+        binascii.b2a_hqx()
+        binascii.rlecode_hqx()
+        binascii.rldecode_hqx()
+  output: |
+    - Removed the binhex module.
+    - Removed functions a2b_hqx(), b2a_hqx(), rlecode_hqx(), rldecode_hqx() functions from binascii module.
+- input: |
+    The binascii.crc_hqx() function remains available.
+    (Contributed by Victor Stinner in bpo-45085.)
+    Removed the distutils bdist_msi command deprecated in Python 3.9. Use bdist_wheel (wheel packages) instead. (Contributed by Hugo van Kemenade in bpo-45124.)
+  output: |
+    - Removed the distutils bdist_msi command deprecated in Python 3.9. Use bdist_wheel (wheel packages) instead.
+- input: |
+    Removed the __getitem__() methods of xml.dom.pulldom.DOMEventStream, wsgiref.util.FileWrapper and fileinput.FileInput, deprecated since Python 3.9. (Contributed by Hugo van Kemenade in bpo-45132.)
+  output: |
+    - Removed the __getitem__() methods of xml.dom.pulldom.DOMEventStream, wsgiref.util.FileWrapper and fileinput.FileInput.
+- input: |
+    Removed the deprecated gettext functions lgettext(), ldgettext(), lngettext() and ldngettext(). Also removed the bind_textdomain_codeset() function, the NullTranslations.output_charset() and NullTranslations.set_output_charset() methods, and the codeset parameter of translation() and install(), since they are only used for the l*gettext() functions. (Contributed by Donghee Na and Serhiy Storchaka in bpo-44235.)
+  output: |
+    - Removed the deprecated gettext functions lgettext(), ldgettext(), lngettext() and ldngettext().
+- input: |
+    Removed from the inspect module:
+        The getargspec() function, deprecated since Python 3.0; use inspect.signature() or inspect.getfullargspec() instead.
+        The formatargspec() function, deprecated since Python 3.5; use the inspect.signature() function or the inspect.Signature object directly.
+        The undocumented Signature.from_builtin() and Signature.from_function() methods, deprecated since Python 3.5; use the Signature.from_callable() method instead.
+  output: |
+    - Removed getargspec() from inspect module. Use inspect.signature() or inspect.getfullargspec() instead.
+    - Removed formatargspec() from inspect module. Use inspect.signature() or inspect.Signature object directly.
+    - Removed Signature.from_builtin() and Signature.from_function() methods. Use Signature.from_callable() instead.
+- input: |
+    configparser.LegacyInterpolation has been deprecated in the docstring since Python 3.2, and is not listed in the configparser documentation. It now emits a DeprecationWarning and will be removed in Python 3.13. Use configparser.BasicInterpolation or configparser.ExtendedInterpolation instead. (Contributed by Hugo van Kemenade in bpo-46607.)
+  output: |
+    - Deprecated configparser.LegacyInterpolation in the docstring. It will be removed in 3.13.
+- input: |
+    The older set of importlib.resources functions were deprecated in favor of the replacements added in Python 3.9 and will be removed in a future Python version, due to not supporting resources located within package subdirectories:
+    importlib.resources.contents()
+    importlib.resources.is_resource()
+    importlib.resources.open_binary()
+    importlib.resources.open_text()
+    importlib.resources.read_binary()
+    importlib.resources.read_text()
+    importlib.resources.path()
+  output: |
+    - Deprecated functions contents(), is_resource(), open_binary(), open_text(), read_binary(), read_text(), path() in importlib.resources module.
+- input: |
+    The locale.getdefaultlocale() function is deprecated and will be removed in Python 3.15. Use locale.setlocale(), locale.getpreferredencoding(False) and locale.getlocale() functions instead. (Contributed by Victor Stinner in gh-90817.)
+  output: |
+    - Deprecated locale.getdefaultlocale() function. It will be removed in Python 3.15. Use locale.setlocale(), locale.getpreferredencoding(False) and locale.getlocale() instead. 

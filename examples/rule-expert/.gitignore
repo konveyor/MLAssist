@@ -1,0 +1,8 @@
+features.yaml
+diff.yaml
+rules.yaml
+.env
+.vscode/
+__pycache__/
+output_rules.yaml
+output_raw.yaml
